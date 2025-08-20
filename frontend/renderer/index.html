@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>APS Biometria – Desktop</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <header>
+    <h1>APS – Reconhecimento Facial</h1>
+    <div id="status">Carregando…</div>
+  </header>
+
+  <main>
+    <section class="camera">
+      <video id="video" autoplay playsinline></video>
+      <canvas id="canvas" width="640" height="480" hidden></canvas>
+      <div class="controls">
+        <button id="btnAuth">Autenticar</button>
+        <div class="enroll">
+          <input id="name" placeholder="Nome" />
+          <select id="level">
+            <option value="1">Nível 1</option>
+            <option value="2">Nível 2</option>
+            <option value="3">Nível 3</option>
+          </select>
+          <button id="btnEnroll">Cadastrar rosto</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="result" class="result"></section>
+    <section id="access" class="access"></section>
+  </main>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
