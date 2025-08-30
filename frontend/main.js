@@ -41,7 +41,7 @@ async function createWindow() {
     }
   });
 
-  await win.loadFile(path.join(__dirname, 'renderer', 'index.html'));
+  await win.loadFile(path.join(__dirname, 'renderer', 'login.html'));
 }
 
 app.whenReady().then(createWindow);

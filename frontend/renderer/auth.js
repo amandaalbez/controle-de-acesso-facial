@@ -1,3 +1,11 @@
+const user = JSON.parse(sessionStorage.getItem("currentUser") || "null");
+
+if (!user) {
+  // Se não tem usuário em sessão, volta para login
+  alert("Faça login primeiro!");
+  window.location.href = "login.html";
+}
+
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
 const statusEl = document.getElementById('status');
@@ -30,8 +38,8 @@ function setAccessUI(level, name) {
   }
   let html = '';
   if (level === 1) html = `<div class="level-1"><h3>Bem-vindo, ${name}</h3><p>📂 Nível 1: informações públicas.</p></div>`;
-  if (level === 2) html = `<div class="level-2"><h3>Bem-vinda(o), ${name}</h3><p>🔒 Nível 2: dados restritos (diretores).</p></div>`;
-  if (level === 3) html = `<div class="level-3"><h3>Bem-vinda(o), ${name}</h3><p>👑 Nível 3: acesso total (Ministro).</p></div>`;
+  if (level === 2) html = `<div class="level-2"><h3>Bem-vinda(o), ${name}</h3><p>🔒 Nível 2: dados restritos.</p></div>`;
+  if (level === 3) html = `<div class="level-3"><h3>Bem-vinda(o), ${name}</h3><p>👑 Nível 3: acesso total.</p></div>`;
   accessEl.innerHTML = html;
 }
 
@@ -39,28 +47,24 @@ document.getElementById('btnAuth').addEventListener('click', async () => {
   const img = snapshotDataURL();
   resultEl.textContent = 'Autenticando…';
   const res = await window.api.auth(img);
+
   if (res.matched) {
-    resultEl.textContent = `✅ Reconhecido: ${res.name} (nível ${res.level}) [dist=${res.distance?.toFixed(3)}]`;
-    setAccessUI(res.level, res.name);
+    // confere se o nome/ID corresponde ao usuário logado
+    if (res.name === user.name) {
+      resultEl.textContent = `✅ Reconhecido: ${res.name} (nível ${res.level})`;
+      setAccessUI(res.level, res.name);
+    } else {
+      resultEl.textContent = `❌ Rosto não corresponde ao usuário logado (${user.name})`;
+      setAccessUI(0);
+    }
   } else {
     resultEl.textContent = '❌ Não reconhecido.';
     setAccessUI(0);
   }
 });
 
-document.getElementById('btnEnroll').addEventListener('click', async () => {
-  const name = document.getElementById('name').value.trim();
-  const level = parseInt(document.getElementById('level').value, 10);
-  if (!name) { alert('Informe um nome'); return; }
-  const img = snapshotDataURL();
-  resultEl.textContent = 'Cadastrando…';
-  const res = await window.api.enroll(name, level, img);
-  if (res.ok) resultEl.textContent = `✅ Cadastrado: ${res.name} (nível ${res.level})`;
-  else resultEl.textContent = `❌ Erro: ${res.error || 'desconhecido'}`;
-});
-
 (async function boot() {
   const h = await window.api.health().catch(() => null);
-  statusEl.textContent = h ? `API ok (${h.registered} rostos)` : 'API indisponível';
+  statusEl.textContent = h ? `API ok (${h.users} usuários)` : 'API indisponível';
   initCamera();
 })();
