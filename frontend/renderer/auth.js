@@ -49,13 +49,15 @@ document.getElementById('btnAuth').addEventListener('click', async () => {
   const res = await window.api.auth(img);
 
   if (res.matched) {
-    // confere se o nome/ID corresponde ao usuário logado
-    if (res.name === user.name) {
-      resultEl.textContent = `✅ Reconhecido: ${res.name} (nível ${res.level})`;
-      setAccessUI(res.level, res.name);
-    } else {
-      resultEl.textContent = `❌ Rosto não corresponde ao usuário logado (${user.name})`;
-      setAccessUI(0);
+    resultEl.textContent = `✅ Reconhecido: ${res.name} (nível ${res.level})`;
+
+    // Redireciona de acordo com o nível
+    if (res.level === 1) {
+      window.location.href = "level1.html";
+    } else if (res.level === 2) {
+      window.location.href = "level2.html";
+    } else if (res.level === 3) {
+      window.location.href = "level3.html";
     }
   } else {
     resultEl.textContent = '❌ Não reconhecido.';
