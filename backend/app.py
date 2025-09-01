@@ -128,16 +128,18 @@ def health():
 @app.route("/enroll", methods=["POST"])
 def enroll():
     """
-    Entrada (JSON): { "name": str, "level": int (opcional, default=1), "image": dataURL }
+    Entrada (JSON): { "name": str, "email": str (opcional), "password": str, "level": int (opcional, default=1), "image": dataURL }
     Saída: { "ok": True, "id": user_id, "name": name, "level": level }
     """
     data = request.get_json(silent=True) or {}
     name = (data.get("name") or "").strip()
+    email = (data.get("email") or "").strip()
+    password = (data.get("password") or "").strip()
     level = int(data.get("level", 1))
     img_b64 = data.get("image")
 
-    if not name or not img_b64:
-        return jsonify({"error": "nome e imagem são obrigatórios"}), 400
+    if not name or not img_b64 or not password:
+        return jsonify({"error": "nome, senha e imagem são obrigatórios"}), 400
 
     bgr = dataurl_to_image(img_b64)
     face_img = detect_first_face_gray(bgr)
@@ -146,22 +148,26 @@ def enroll():
 
     session = SessionLocal()
     try:
-        # cria o usuário (email/senha são opcionais aqui)
-        user = User(name=name, level=level)
+        # cria o usuário já com senha criptografada
+        user = User(
+            name=name,
+            email=email if email else None,
+            password_hash=hash_password(password),
+            level=level
+        )
         session.add(user)
-        session.commit()  # para obter user.id
+        session.commit()
 
-        # salva a imagem do rosto (um arquivo por usuário, como você já fazia)
+        # salva a imagem recortada
         filename = f"user_{user.id}.jpg"
         save_path = os.path.join(DATA_DIR, filename)
         cv2.imwrite(save_path, face_img)
 
-        # registra no banco a face
         face_row = FaceSample(user_id=user.id, image_path=filename)
         session.add(face_row)
         session.commit()
 
-        # re-treina o modelo
+        # treina modelo
         trained = train_from_db()
         if not trained:
             return jsonify({"error": "falha ao treinar modelo"}), 500
@@ -170,7 +176,7 @@ def enroll():
 
     except IntegrityError:
         session.rollback()
-        return jsonify({"error": "conflito de dados (email duplicado?)"}), 409
+        return jsonify({"error": "email duplicado"}), 409
     except Exception as e:
         session.rollback()
         return jsonify({"error": f"erro interno: {e}"}), 500
