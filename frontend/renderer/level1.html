@@ -159,6 +159,18 @@
       box-shadow: 0 4px 12px rgba(127,176,105,0.4);
     }
     
+    .logout-btn {
+      background: transparent;
+      color: #dc3545;
+      border: 1px solid #dc3545;
+      margin-top: 8px;
+    }
+    
+    .logout-btn:hover {
+      background: #dc3545;
+      color: white;
+    }
+    
     .main-content {
       flex: 1;
       padding: 24px;
@@ -265,6 +277,7 @@
         <div class="auth-buttons">
           <button class="auth-btn login-btn">Fazer Login</button>
           <button class="auth-btn register-btn">Novo Cadastro</button>
+          <Sair class="auth-btn logout-btn" onclick="window.location.href='../login.html'">Sair</button>
         </div>
       </div>
     </aside>
@@ -329,30 +342,13 @@
       </div>
     </main>
   </div>
+
+  <div class="status-bar">
+    <span>🌍 Conectado ao servidor MMA | 📡 Última sincronização: 15:42</span>
+    <span>💻 Usuário: Visitante | 🔒 Acesso Nível 1</span>
+  </div>
 </body>
 </html>
-        <div class="auth-buttons">
-          <button class="auth-btn login-btn">Fazer Login</button>
-          <button class="auth-btn register-btn">Novo Cadastro</button>
-        </div>
-      </div>
-    </aside>
-
-    <main class="main-content">
-      <div class="content-header">
-        <h2>📰 Central de Notícias</h2>
-        <div class="status-indicator">
-          <span>🟢</span>
-          <span>Sistema Online</span>
-        </div>
-      </div>
-
-      <div class="news-grid">
-        <article class="news-card">
-          <div class="card-header">
-            <div class="card-meta">
-              <span class="category-badge">DESTAQUE</span>
-              <span>14/12/2024 - 15:30</span>
             </div>
           </div>
           <div class="card-content">
