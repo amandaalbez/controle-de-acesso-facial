@@ -4,33 +4,290 @@
   <meta charset="UTF-8" />
   <title>Cadastro – APS Biometria</title>
   <link rel="stylesheet" href="../assets/style.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background: linear-gradient(135deg, #f0f8f0 0%, #e8f5e8 100%);
+      color: #2d4a3d; 
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .title-bar {
+      background: linear-gradient(135deg, #7fb069 0%, #a8d8a8 100%);
+      color: white;
+      padding: 6px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      box-shadow: 0 2px 10px rgba(127,176,105,0.2);
+      flex-shrink: 0;
+    }
+    
+    .register-container {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 15px 10px;
+      min-height: 0;
+    }
+    
+    .register-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 100%;
+      max-width: 380px;
+      border: 1px solid #e8f5e8;
+      margin: auto;
+    }
+    
+    .logo-section {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    
+    .logo-icon {
+      font-size: 2em;
+      margin-bottom: 4px;
+      display: block;
+    }
+    
+    .logo-section h1 {
+      color: #2d4a3d;
+      font-size: 1.3em;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    
+    .logo-section p {
+      color: #6b8e6b;
+      font-size: 0.75em;
+    }
+    
+    .form-group {
+      margin-bottom: 12px;
+    }
+    
+    .form-group label {
+      display: block;
+      color: #2d4a3d;
+      font-weight: 500;
+      margin-bottom: 4px;
+      font-size: 0.8em;
+    }
+    
+    .form-input, .form-select {
+      width: 100%;
+      padding: 8px 12px;
+      border: 2px solid #e8f5e8;
+      border-radius: 6px;
+      font-size: 0.85em;
+      background: #fafcfa;
+      transition: all 0.3s;
+    }
+    
+    .form-input:focus, .form-select:focus {
+      outline: none;
+      border-color: #7fb069;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(127,176,105,0.1);
+    }
+    
+    .video-section {
+      text-align: center;
+      margin: 12px 0;
+    }
+    
+    .video-section label {
+      display: block;
+      color: #2d4a3d;
+      font-weight: 500;
+      margin-bottom: 6px;
+      font-size: 0.8em;
+    }
+    
+    #video {
+      width: 100%;
+      max-width: 200px;
+      height: 150px;
+      border-radius: 8px;
+      border: 2px solid #e8f5e8;
+      object-fit: cover;
+    }
+    
+    .register-btn {
+      width: 100%;
+      padding: 10px;
+      background: linear-gradient(135deg, #7fb069 0%, #a8d8a8 100%);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.85em;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 14px 0 12px 0;
+      transition: all 0.3s;
+    }
+    
+    .register-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(127,176,105,0.3);
+    }
+    
+    .login-link {
+      text-align: center;
+      color: #6b8e6b;
+      font-size: 0.75em;
+    }
+    
+    .login-link a {
+      color: #7fb069;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .login-link a:hover {
+      color: #5a8c4a;
+      text-decoration: underline;
+    }
+
+    /* Responsividade para telas menores */
+    @media (max-height: 700px) {
+      .register-card {
+        padding: 16px;
+      }
+      
+      .logo-section {
+        margin-bottom: 12px;
+      }
+      
+      .form-group {
+        margin-bottom: 10px;
+      }
+      
+      #video {
+        max-width: 180px;
+        height: 135px;
+      }
+    }
+
+    @media (max-height: 600px) {
+      .title-bar {
+        padding: 4px 16px;
+      }
+      
+      .register-container {
+        padding: 10px;
+      }
+      
+      .register-card {
+        padding: 12px;
+      }
+      
+      .logo-section {
+        margin-bottom: 8px;
+      }
+      
+      .logo-icon {
+        font-size: 1.5em;
+      }
+      
+      .logo-section h1 {
+        font-size: 1.1em;
+      }
+      
+      #video {
+        max-width: 160px;
+        height: 120px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>APS – Cadastro</h1>
-    <div id="status">Carregando…</div>
-  </header>
+  <div class="title-bar">
+    <div class="title-info">
+      <span>🔐</span>
+      <span>Ministério do Meio Ambiente - Sistema de Cadastro</span>
+    </div>
+    <div class="status" id="status">Carregando…</div>
+  </div>
+  
+  <div class="register-container">
+    <div class="register-card">
+      <div class="logo-section">
+        <span class="logo-icon">🌿</span>
+        <h1>Cadastro</h1>
+        <p>Ministério do Meio Ambiente</p>
+      </div>
 
-  <main>
-    <section class="enroll">
-      <h2>Cadastro de usuário</h2>
-      <input id="name" placeholder="Nome" />
-      <input id="email" placeholder="Email" />
-      <input id="password" type="password" placeholder="Senha" />
-      <select id="level">
-        <option value="1">Nível 1</option>
-        <option value="2">Nível 2</option>
-        <option value="3">Nível 3</option>
-      </select>
+      <form class="register-form">
+        <div class="form-group">
+          <label for="name">Nome Completo</label>
+          <input 
+            id="name" 
+            class="form-input"
+            type="text"
+            placeholder="Digite seu nome completo"
+            required
+          />
+        </div>
 
-      <video id="video" autoplay playsinline></video>
-      <canvas id="canvas" width="640" height="480" hidden></canvas>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input 
+            id="email" 
+            class="form-input"
+            type="email"
+            placeholder="Digite seu email"
+            required
+          />
+        </div>
 
-      <button id="btnEnroll">Cadastrar</button>
-    </section>
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <input 
+            id="password" 
+            class="form-input"
+            type="password" 
+            placeholder="Digite sua senha"
+            required
+          />
+        </div>
 
-    <p>Já tem conta? <a href="login.html">Entrar</a></p>
-  </main>
+        <div class="form-group">
+          <label for="level">Nível de Acesso</label>
+          <select id="level" class="form-select" required>
+            <option value="">Selecione o nível</option>
+            <option value="1">Nível 1</option>
+            <option value="2">Nível 2</option>
+            <option value="3">Nível 3</option>
+          </select>
+        </div>
+
+        <div class="video-section">
+          <label>Captura Facial</label>
+          <video id="video" autoplay playsinline></video>
+          <canvas id="canvas" width="640" height="480" hidden></canvas>
+        </div>
+
+        <button type="button" class="register-btn" id="btnEnroll">
+          Cadastrar Usuário
+        </button>
+      </form>
+
+      <div class="login-link">
+        <p>Já possui uma conta? <a href="login.html">Faça login aqui</a></p>
+      </div>
+    </div>
+  </div>
 
   <script src="register.js"></script>
 </body>
