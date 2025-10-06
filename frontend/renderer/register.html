@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Cadastro - Controle de Acesso Facial</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Cadastro</h2>
+
+    <form id="registerForm">
+      <input id="nameInput" placeholder="Nome completo" required />
+      <input id="emailInput" placeholder="Email (opcional)" />
+      <input id="passwordInput" type="password" placeholder="Senha" required />
+      <select id="levelInput">
+        <option value="1">Nível 1 - Público</option>
+        <option value="2">Nível 2 - Diretores</option>
+        <option value="3">Nível 3 - Ministro</option>
+      </select>
+
+      <h3>Captura do rosto</h3>
+      <video id="camera" autoplay playsinline width="360"></video><br>
+      <canvas id="snapshot" width="360" height="270" style="display:none;"></canvas>
+      <div class="row" style="margin-top:8px">
+        <button id="btnCapture" type="button">Capturar Rosto</button>
+        <button id="btnSubmit" type="submit">Cadastrar</button>
+        <button id="btnBack" type="button" class="btn-secondary">Voltar</button>
+      </div>
+    </form>
+
+    <div id="msg" class="msg"></div>
+  </div>
+
+  <script src="register.js"></script>
+</body>
+</html>

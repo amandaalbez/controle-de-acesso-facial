@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Autenticação Facial</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Autenticação Facial</h2>
+
+    <div id="userInfo" class="msg"></div>
+
+    <video id="camera" autoplay playsinline width="360"></video>
+    <canvas id="canvas" width="360" height="270" style="display:none;"></canvas>
+
+    <div class="row" style="margin-top:8px">
+      <button id="btnAuth">Autenticar Rosto</button>
+      <button id="btnLogout" class="btn-secondary">Logout</button>
+    </div>
+
+    <div id="result" class="msg" style="margin-top:10px"></div>
+  </div>
+
+  <script src="auth.js"></script>
+</body>
+</html>
