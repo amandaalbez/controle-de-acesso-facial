@@ -1,0 +1,22 @@
+# Dependências principais
+flask==2.3.3
+opencv-python==4.8.1.78
+numpy==1.24.3
+sqlalchemy==2.0.21
+bcrypt==4.0.1
+
+# Dependências adicionais para OpenCV
+opencv-contrib-python==4.8.1.78
+
+# Dependências do Flask
+Werkzeug==2.3.7
+Jinja2==3.1.2
+MarkupSafe==2.1.3
+itsdangerous==2.1.2
+click==8.1.7
+
+# Para manipulação de imagens e arrays
+Pillow==10.0.1
+
+# Dependências do SQLAlchemy
+typing-extensions==4.8.0

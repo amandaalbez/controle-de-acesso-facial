@@ -1,0 +1,13 @@
+body { font-family: system-ui, sans-serif; margin: 0; }
+header { padding: 12px 20px; background: #0f172a; color: #fff; display:flex; justify-content:space-between; align-items:center;}
+main { padding: 20px; display: grid; gap: 16px; }
+.camera { display: grid; gap: 12px; }
+video { width: 640px; height: 480px; background: #000; border-radius: 12px; }
+.controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+button { padding: 10px 14px; border-radius: 10px; border: none; cursor: pointer; }
+#btnAuth { background: #2563eb; color: white; }
+#btnEnroll { background: #16a34a; color: white; }
+.result, .access { padding: 14px; border-radius: 10px; background: #f1f5f9; }
+.level-1 { background: #e0f2fe; }
+.level-2 { background: #fde68a; }
+level-3 { background: #fecaca; }

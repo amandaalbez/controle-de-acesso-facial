@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Autenticação Facial – APS Biometria</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <header>
+    <h1>APS – Autenticação Facial</h1>
+    <div id="status">Carregando…</div>
+  </header>
+
+  <main>
+    <section class="camera">
+      <video id="video" autoplay playsinline></video>
+      <canvas id="canvas" width="640" height="480" hidden></canvas>
+      <div class="controls">
+        <button id="btnAuth">Autenticar</button>
+      </div>
+    </section>
+
+    <section id="result"></section>
+    <section id="access"></section>
+  </main>
+
+  <script src="auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+# =====================
+# Python
+# =====================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pkl
+*.db
+*.sqlite3
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Logs
+*.log
+
+# =====================
+# Node / Electron
+# =====================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Build output
+dist/
+build/
+out/
+*.asar
+
+# =====================
+# OS / IDE files
+# =====================
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# VSCode / JetBrains
+.vscode/
+.idea/
+*.iml
+
+# =====================
+# Project specific
+# =====================
+# Arquivos de imagens temporárias ou testes
+backend/data/testes/
