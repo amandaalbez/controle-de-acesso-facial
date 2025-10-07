@@ -2,24 +2,32 @@
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
-  <title>Autenticação Facial</title>
-  <link rel="stylesheet" href="../assets/style.css">
+  <title>EcoFace - Ministerio do meio ambiente de São Paulo | Autenticação</title>
+  <link rel="stylesheet" href="../assets/styles.css">
 </head>
-<body>
-  <div class="container">
+<body class="auth">
+  <div class="container auth-card">
+    <div class="app-brand">
+      <div class="app-brand__badge app-brand__badge--round">Eco</div>
+      <div class="app-brand__title">EcoFace - Ministerio do meio ambiente de São Paulo</div>
+      <div class="app-brand__subtitle">Autenticação facial</div>
+    </div>
+
     <h2>Autenticação Facial</h2>
 
-    <div id="userInfo" class="msg"></div>
+    <div id="userInfo" class="msg" role="status" aria-live="polite"></div>
 
-    <video id="camera" autoplay playsinline width="360"></video>
-    <canvas id="canvas" width="360" height="270" style="display:none;"></canvas>
+    <div class="capture-area">
+      <video id="camera" autoplay playsinline width="360"></video>
+      <canvas id="canvas" width="360" height="270" style="display:none;"></canvas>
+    </div>
 
     <div class="row" style="margin-top:8px">
       <button id="btnAuth">Autenticar Rosto</button>
-      <button id="btnLogout" class="btn-secondary">Logout</button>
+      <button id="btnLogout" class="btn-secondary">Sair</button>
     </div>
 
-    <div id="result" class="msg" style="margin-top:10px"></div>
+    <div id="result" class="msg" style="margin-top:10px" role="status" aria-live="polite"></div>
   </div>
 
   <script src="auth.js"></script>

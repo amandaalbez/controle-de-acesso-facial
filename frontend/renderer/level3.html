@@ -2,15 +2,173 @@
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
-  <title>Nível 3 - Acesso</title>
-  <link rel="stylesheet" href="../assets/style.css">
+  <title>EcoFace - Ministerio do meio ambiente de São Paulo | Ministro</title>
+  <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
-  <div class="container level-3">
-    <h2>Acesso Nível 3 — Ministro</h2>
-    <p>Acesso total ao sistema.</p>
-    <button onclick="location.href='login.html'">Sair</button>
-  </div>
+  <header class="dash-header">
+    <div class="container-wide">
+      <div class="dash-header__top">
+        <div class="app-brand">
+          <div class="app-brand__badge">Eco</div>
+          <div class="app-brand__title">EcoFace - Ministerio do meio ambiente de São Paulo</div>
+        </div>
+        <div class="dash-header__actions">
+          <button class="btn-secondary" onclick="location.href='login.html'">Sair</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-main">
+    <div class="container-wide">
+      <div class="confidential-banner -critical">
+        Ultrassecreto — Acesso exclusivo do Ministro. Divulgação proibida. Monitorado e auditado.
+      </div>
+
+      <section class="stats-grid">
+        <article class="stat-card">
+          <div class="kpi-label">Alertas críticos ativos</div>
+          <div class="kpi-value">7</div>
+          <div class="kpi-delta is-warn">3 novos nas últimas 12h</div>
+        </article>
+        <article class="stat-card">
+          <div class="kpi-label">Operações em campo</div>
+          <div class="kpi-value">12</div>
+          <div class="kpi-delta is-ok">Dentro do cronograma</div>
+        </article>
+        <article class="stat-card">
+          <div class="kpi-label">Orçamento sigiloso</div>
+          <div class="kpi-value">R$ 48,6M</div>
+          <div class="kpi-delta is-down">-4% vs. mês anterior</div>
+        </article>
+        <article class="stat-card">
+          <div class="kpi-label">Compliance</div>
+          <div class="kpi-value">99,2%</div>
+          <div class="kpi-delta is-ok">Sem não conformidades</div>
+        </article>
+      </section>
+
+      <section class="dash-panels">
+        <div class="panel">
+          <h3>Mapa de risco — Operações estratégicas</h3>
+          <div class="risk-matrix">
+            <div class="risk-cell -low">Baixo</div>
+            <div class="risk-cell -med">Médio</div>
+            <div class="risk-cell -high">Alto</div>
+            <div class="risk-cell -low">Baixo</div>
+            <div class="risk-cell -med">Médio</div>
+            <div class="risk-cell -high">Alto</div>
+            <div class="risk-cell -low">Baixo</div>
+            <div class="risk-cell -med">Médio</div>
+            <div class="risk-cell -extreme">Crítico</div>
+          </div>
+          <div class="risk-legend">
+            <span class="dot -low"></span>Baixo
+            <span class="dot -med"></span>Médio
+            <span class="dot -high"></span>Alto
+            <span class="dot -extreme"></span>Crítico
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Agenda prioritária (72h)</h3>
+          <ul class="timeline">
+            <li>
+              <div class="time">Hoje • 14:00</div>
+              <div class="title">Briefing Operação Verde</div>
+              <div class="meta">Sala reservada • Duração 45min</div>
+            </li>
+            <li>
+              <div class="time">Hoje • 18:30</div>
+              <div class="title">Despacho de orçamento sigiloso</div>
+              <div class="meta">Aprovação digital</div>
+            </li>
+            <li>
+              <div class="time">Amanhã • 09:00</div>
+              <div class="title">Reunião interministerial</div>
+              <div class="meta">Pauta: Plano emergencial</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3>Aprovações pendentes</h3>
+          <ul class="approvals-list">
+            <li>
+              <div class="info">
+                <div class="title">Contrato confidencial — Fase 2</div>
+                <div class="meta">Prazo: hoje • Classificação: Ultra</div>
+              </div>
+              <div class="actions">
+                <button>Approvar</button>
+                <button class="btn-secondary">Rejeitar</button>
+              </div>
+            </li>
+            <li>
+              <div class="info">
+                <div class="title">Diretriz de contingência</div>
+                <div class="meta">Prazo: amanhã • Classificação: Restrito</div>
+              </div>
+              <div class="actions">
+                <button>Approvar</button>
+                <button class="btn-secondary">Rejeitar</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3>Logs de acesso (últimas 24h)</h3>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Usuário</th>
+                <th>Ação</th>
+                <th>Recurso</th>
+                <th>Horário</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>auditoria@mma.sp</td>
+                <td>Leitura</td>
+                <td>Dossiê 14</td>
+                <td>13:12</td>
+                <td><span class="badge -ok">OK</span></td>
+              </tr>
+              <tr>
+                <td>ops.sigilo@mma.sp</td>
+                <td>Exportação</td>
+                <td>Relatório Alpha</td>
+                <td>10:47</td>
+                <td><span class="badge -warn">Revisão</span></td>
+              </tr>
+              <tr>
+                <td>externo</td>
+                <td>Tentativa</td>
+                <td>Dados sensíveis</td>
+                <td>02:03</td>
+                <td><span class="badge -risk">Bloqueado</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="secure-note">
+        Canal monitorado. Todas as ações são registradas para auditoria.
+      </div>
+
+      <section class="quick-actions">
+        <button>Reunião de crise</button>
+        <button>Assinar despacho</button>
+        <button class="btn-secondary">Ativar protocolo</button>
+      </section>
+    </div>
+  </main>
+
   <script src="level.js"></script>
 </body>
 </html>

@@ -2,15 +2,118 @@
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
-  <title>Nível 1 - Acesso</title>
-  <link rel="stylesheet" href="../assets/style.css">
+  <title>EcoFace - Ministerio do meio ambiente de São Paulo | Nível 1</title>
+  <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
-  <div class="container level-1">
-    <h2>Acesso Nível 1 — Público</h2>
-    <p>Bem-vindo! Você tem acesso às informações públicas.</p>
-    <button onclick="location.href='login.html'">Sair</button>
-  </div>
+  <header class="news-header">
+    <div class="container-wide">
+      <div class="news-header__top">
+        <div class="app-brand">
+          <div class="app-brand__badge">Eco</div>
+          <div class="app-brand__title">EcoFace - Ministerio do meio ambiente de São Paulo</div>
+        </div>
+        <div class="news-header__actions">
+          <button class="btn-secondary" onclick="location.href='login.html'">Sair</button>
+        </div>
+      </div>
+      <nav class="news-nav">
+        <button class="chip is-active">Destaques</button>
+        <button class="chip">Meio ambiente</button>
+        <button class="chip">Sustentabilidade</button>
+        <button class="chip">Projetos</button>
+        <button class="chip">Eventos</button>
+        <button class="chip">Dados abertos</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="news-main">
+    <div class="container-wide">
+      <section class="news-hero">
+        <article class="hero-card">
+          <div class="hero-media"></div>
+          <div class="hero-content">
+            <h2>Plano de reflorestamento urbano é ampliado</h2>
+            <p>Iniciativa prevê plantio de 2 milhões de árvores em áreas metropolitanas, priorizando corredores ecológicos.</p>
+            <div class="meta">Atualizado há 2h • Secretaria de Meio Ambiente</div>
+            <div style="margin-top:12px">
+              <button>Leia mais</button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="news-grid">
+        <article class="news-card">
+          <div class="news-card__media"></div>
+          <div class="news-card__body">
+            <span class="tag">Sustentabilidade</span>
+            <h3>Relatório de qualidade da água 2025</h3>
+            <p>Novos indicadores mostram melhora em bacias críticas do estado.</p>
+            <div class="meta">Há 5h • Dados abertos</div>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-card__media"></div>
+          <div class="news-card__body">
+            <span class="tag">Eventos</span>
+            <h3>Mutirão de limpeza no Tietê</h3>
+            <p>Ação comunitária mobiliza mais de 1.200 voluntários no fim de semana.</p>
+            <div class="meta">Ontem • Ação local</div>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-card__media"></div>
+          <div class="news-card__body">
+            <span class="tag">Projetos</span>
+            <h3>Parques urbanos inteligentes</h3>
+            <p>Piloto integra sensores para monitoramento de fauna e flora.</p>
+            <div class="meta">Há 1 dia • Projetos</div>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-card__media"></div>
+          <div class="news-card__body">
+            <span class="tag">Meio ambiente</span>
+            <h3>Fauna nativa em recuperação</h3>
+            <p>Espécies ameaçadas voltam a ser observadas em reservas.</p>
+            <div class="meta">Há 2 dias • Observatório</div>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-card__media"></div>
+          <div class="news-card__body">
+            <span class="tag">Sustentabilidade</span>
+            <h3>Coleta seletiva bate recorde</h3>
+            <p>Programas municipais ampliam cobertura e eficiência.</p>
+            <div class="meta">Há 3 dias • Indicadores</div>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-card__media"></div>
+          <div class="news-card__body">
+            <span class="tag">Dados abertos</span>
+            <h3>Nova API de monitoramento</h3>
+            <p>Acesso público a séries históricas de qualidade do ar.</p>
+            <div class="meta">Há 4 dias • Tecnologia</div>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer class="news-footer">
+    <div class="container-wide">
+      <small>EcoFace - Ministerio do meio ambiente de São Paulo • Conteúdo público (Nível 1)</small>
+    </div>
+  </footer>
+
   <script src="level.js"></script>
 </body>
 </html>

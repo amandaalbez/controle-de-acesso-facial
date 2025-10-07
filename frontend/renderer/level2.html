@@ -2,15 +2,106 @@
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
-  <title>Nível 2 - Acesso</title>
-  <link rel="stylesheet" href="../assets/style.css">
+  <title>EcoFace - Ministerio do meio ambiente de São Paulo | Diretores</title>
+  <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
-  <div class="container level-2">
-    <h2>Acesso Nível 2 — Diretores</h2>
-    <p>Bem-vindo, Diretor(a). Aqui estão os conteúdos restritos.</p>
-    <button onclick="location.href='login.html'">Sair</button>
-  </div>
+  <header class="dash-header">
+    <div class="container-wide">
+      <div class="dash-header__top">
+        <div class="app-brand">
+          <div class="app-brand__badge">Eco</div>
+          <div class="app-brand__title">EcoFace - Ministerio do meio ambiente de São Paulo</div>
+        </div>
+        <div class="dash-header__actions">
+          <button class="btn-secondary" onclick="location.href='login.html'">Sair</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-main">
+    <div class="container-wide">
+      <div class="confidential-banner">
+        Acesso restrito — Dados confidenciais. Compartilhamento é proibido sem autorização.
+      </div>
+
+      <section class="stats-grid">
+        <article class="stat-card">
+          <div class="kpi-label">Incidentes ambientais (30d)</div>
+          <div class="kpi-value">128</div>
+          <div class="kpi-delta is-down">-12% vs. mês anterior</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="kpi-label">Projetos ativos</div>
+          <div class="kpi-value">57</div>
+          <div class="kpi-delta is-up">+5 novos</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="kpi-label">Execução orçamentária</div>
+          <div class="kpi-value">76%</div>
+          <div class="kpi-delta is-warn">Restante: 24%</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="kpi-label">Risco operacional</div>
+          <div class="kpi-value">Baixo</div>
+          <div class="kpi-delta is-ok">Estável</div>
+        </article>
+      </section>
+
+      <section class="dash-panels">
+        <div class="panel">
+          <h3>Monitoramento — Qualidade do ar (últimas 24h)</h3>
+          <div class="chart-placeholder"></div>
+          <div class="meta">Fonte: Rede estadual de monitoramento</div>
+        </div>
+
+        <div class="panel">
+          <h3>Documentos recentes</h3>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Documento</th>
+                <th>Classificação</th>
+                <th>Atualização</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Plano estadual de resíduos — v2</td>
+                <td>Confidencial</td>
+                <td>Há 3h</td>
+                <td><span class="badge -ok">Aprovado</span></td>
+              </tr>
+              <tr>
+                <td>Relatório de impacto — Zona Norte</td>
+                <td>Restrito</td>
+                <td>Há 7h</td>
+                <td><span class="badge -warn">Em revisão</span></td>
+              </tr>
+              <tr>
+                <td>Contrato emergencial — Licitação 08/25</td>
+                <td>Confidencial</td>
+                <td>Ontem</td>
+                <td><span class="badge -risk">Pendências</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="quick-actions">
+        <button>Nova diretriz</button>
+        <button>Submeter relatório</button>
+        <button class="btn-secondary">Exportar dados</button>
+      </section>
+    </div>
+  </main>
+
   <script src="level.js"></script>
 </body>
 </html>

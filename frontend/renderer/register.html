@@ -2,26 +2,42 @@
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
-  <title>Cadastro - Controle de Acesso Facial</title>
-  <link rel="stylesheet" href="../assets/style.css">
+  <title>EcoFace - Ministerio do meio ambiente de São Paulo | Cadastro</title>
+  <link rel="stylesheet" href="../assets/styles.css">
 </head>
-<body>
-  <div class="container">
+<body class="auth">
+  <div class="container auth-card">
+    <div class="app-brand">
+      <div class="app-brand__badge app-brand__badge--round">Eco</div>
+      <div class="app-brand__title">EcoFace - Ministerio do meio ambiente de São Paulo</div>
+      <div class="app-brand__subtitle">Crie sua conta</div>
+    </div>
+
     <h2>Cadastro</h2>
 
     <form id="registerForm">
-      <input id="nameInput" placeholder="Nome completo" required />
-      <input id="emailInput" placeholder="Email (opcional)" />
-      <input id="passwordInput" type="password" placeholder="Senha" required />
-      <select id="levelInput">
+      <label for="nameInput">Nome completo</label>
+      <input id="nameInput" type="text" name="name" placeholder="Nome completo" autocomplete="name" required autofocus />
+
+      <label for="emailInput">Email (opcional)</label>
+      <input id="emailInput" type="email" name="email" placeholder="Email (opcional)" autocomplete="email" />
+
+      <label for="passwordInput">Senha</label>
+      <input id="passwordInput" type="password" name="new-password" placeholder="Senha" autocomplete="new-password" required />
+
+      <label for="levelInput">Nível de acesso</label>
+      <select id="levelInput" name="access-level">
         <option value="1">Nível 1 - Público</option>
         <option value="2">Nível 2 - Diretores</option>
         <option value="3">Nível 3 - Ministro</option>
       </select>
 
       <h3>Captura do rosto</h3>
-      <video id="camera" autoplay playsinline width="360"></video><br>
-      <canvas id="snapshot" width="360" height="270" style="display:none;"></canvas>
+      <div class="capture-area">
+        <video id="camera" autoplay playsinline width="360"></video>
+        <canvas id="snapshot" width="360" height="270" style="display:none;"></canvas>
+      </div><br>
+
       <div class="row" style="margin-top:8px">
         <button id="btnCapture" type="button">Capturar Rosto</button>
         <button id="btnSubmit" type="submit">Cadastrar</button>
@@ -29,7 +45,7 @@
       </div>
     </form>
 
-    <div id="msg" class="msg"></div>
+    <div id="msg" class="msg" role="status" aria-live="polite"></div>
   </div>
 
   <script src="register.js"></script>
