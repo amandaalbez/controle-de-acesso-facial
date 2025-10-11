@@ -295,6 +295,21 @@ video {
     #ecfdf5;
 }
 
+.hero-media,
+.news-card__media {
+  display: block;        /* funciona tanto para <a> quanto <div> */
+  position: relative;
+}
+
+.hero-media img,
+.news-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* preenche mantendo proporção, cortando excesso */
+  display: block;
+  border: 0;
+}
+
 .hero-content {
   padding: 16px;
 }
