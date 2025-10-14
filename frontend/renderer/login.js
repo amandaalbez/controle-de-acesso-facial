@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnToRegister = document.getElementById('btnToRegister');
   const statusEl = document.getElementById('status');
 
-  // checar health
+  // checar api
   (async () => {
     const h = await window.api.health().catch(()=>null);
     statusEl.textContent = h ? 'API online' : 'API indisponível';

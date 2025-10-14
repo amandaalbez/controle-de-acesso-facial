@@ -4,13 +4,6 @@ const { spawn } = require('child_process');
 
 let pyProcess = null;
 
-function startPython() {
-  // opcional: descomente se quiser que o Electron tente iniciar o backend automaticamente
-  // const backendPath = path.join(__dirname, '..', 'backend', 'app.py');
-  // const pyExec = process.platform === 'win32' ? 'python' : 'python3';
-  // pyProcess = spawn(pyExec, [backendPath], { cwd: path.join(__dirname, '..', 'backend'), stdio: 'inherit' });
-}
-
 async function waitForServer(url, attempts = 25, delayMs = 300) {
   for (let i = 0; i < attempts; i++) {
     try {
@@ -23,9 +16,6 @@ async function waitForServer(url, attempts = 25, delayMs = 300) {
 }
 
 async function createWindow() {
-  //startPython(); // descomente se usar startPython()
-
-  // opcional: espera a rota /health responder antes de abrir a janela
   try {
     await waitForServer('http://127.0.0.1:5000/health', 10, 300);
   } catch (e) { /* ignore */ }

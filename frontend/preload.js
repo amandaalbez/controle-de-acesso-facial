@@ -3,7 +3,7 @@ const { contextBridge } = require('electron');
 const API_URL = "http://127.0.0.1:5000";
 
 contextBridge.exposeInMainWorld('api', {
-  // health
+  // api
   health: async () => {
     const res = await fetch(`${API_URL}/health`);
     return res.ok ? await res.json() : null;
