@@ -47,12 +47,13 @@ Base.metadata.create_all(engine)
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 
 # ---------- Utilitários ----------
+#Base64 para imagem
 def dataurl_to_image(data_url):
     _, b64 = data_url.split(",", 1)
     img_data = base64.b64decode(b64)
     nparr = np.frombuffer(img_data, np.uint8)
     return cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-
+# Detecção de rosto
 def detect_face_gray(bgr):
     gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
@@ -61,18 +62,19 @@ def detect_face_gray(bgr):
         return None
     (x, y, w, h) = faces[0]
     return gray[y:y+h, x:x+w]
-
+# Hash de senha
 def hash_password(p):
     return bcrypt.hashpw(p.encode(), bcrypt.gensalt()).decode()
-
+# Verificação de senha
 def check_password(p, hashed):
     return bcrypt.checkpw(p.encode(), hashed.encode())
 
 # ---------- Rotas ----------
+# Rota de saúde
 @app.route("/health")
 def health():
     return {"status": "ok"}, 200
-
+# Rota de cadastro  
 @app.route("/enroll", methods=["POST"])
 def enroll():
     data = request.get_json() or {}
@@ -108,7 +110,7 @@ def enroll():
         return jsonify({"error": "email já cadastrado"}), 409
     finally:
         session.close()
-
+# Rota de login
 @app.route("/login", methods=["POST"])
 def login():
     data = request.get_json() or {}
@@ -128,6 +130,7 @@ def login():
 
     return jsonify({"ok": True, "user": {"id": user.id, "name": user.name, "email": user.email, "level": user.level}})
 
+# Rota de autenticação facial
 @app.route("/auth", methods=["POST"])
 def auth():
     data = request.get_json() or {}
@@ -135,9 +138,9 @@ def auth():
     if not img_b64:
         return jsonify({"error": "imagem obrigatória"}), 400
 
-    bgr = dataurl_to_image(img_b64)
-    face = detect_face_gray(bgr)
-    if face is None:
+    bgr = dataurl_to_image(img_b64) #img códificada em base64 
+    face = detect_face_gray(bgr) #face cinza  
+    if face is None: 
         return jsonify({"matched": False, "reason": "rosto não detectado"}), 422
 
     session = SessionLocal()
@@ -159,6 +162,6 @@ def auth():
     if conf < 80:
         return jsonify({"matched": True, "name": user.name, "level": user.level, "confidence": float(conf)})
     return jsonify({"matched": False, "reason": "rosto não corresponde"})
-
+# ---------- Execução ----------
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=5000)
