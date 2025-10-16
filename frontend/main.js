@@ -1,9 +1,9 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const { spawn } = require('child_process');
-
+// Inicia o servidor Flask
 let pyProcess = null;
-
+// Ajuste o caminho conforme necessário
 async function waitForServer(url, attempts = 25, delayMs = 300) {
   for (let i = 0; i < attempts; i++) {
     try {
@@ -14,12 +14,12 @@ async function waitForServer(url, attempts = 25, delayMs = 300) {
   }
   return false;
 }
-
+// Inicia o servidor Python
 async function createWindow() {
   try {
     await waitForServer('http://127.0.0.1:5000/health', 10, 300);
   } catch (e) { /* ignore */ }
-
+// Cria a janela do navegador.
   const win = new BrowserWindow({
     width: 1000,
     height: 700,
@@ -32,9 +32,9 @@ async function createWindow() {
 
   await win.loadFile(path.join(__dirname, 'renderer', 'login.html'));
 }
-
+// Inicia o processo Python
 app.whenReady().then(createWindow);
-
+// Ajuste o comando conforme necessário
 app.on('window-all-closed', () => {
   if (pyProcess) {
     try { pyProcess.kill('SIGTERM'); } catch (_) {}
